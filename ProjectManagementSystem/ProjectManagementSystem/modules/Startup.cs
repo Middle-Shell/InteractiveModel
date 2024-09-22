@@ -10,15 +10,12 @@ namespace ProjectManagementSystem.modules
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            // Регистрируем DataManager как одноэлементный объект (Singleton)
             services.AddSingleton<DataManager>();
-            services.AddSingleton<IDataStorage, JsonDataStorage>(); // Регистрируем JsonDataStorage как реализацию IDataStorage
+            services.AddSingleton<IDataStorage, JsonDataStorage>();
             services.AddSingleton<Authenticator>();
 
-            // Регистрируем Logger как одноэлементный объект (Singleton)
             services.AddSingleton<Logger>();
 
-            // Регистрируем CLI как объект, создаваемый для каждого запроса (Scoped)
             services.AddScoped<CLI>();
         }
     }

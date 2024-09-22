@@ -18,7 +18,7 @@ namespace ProjectManagementSystem.modules.BasicEntities
         public User(string username, string passwordHash, Role role) 
         {
             Username = username;
-            PasswordHash = passwordHash; //  Хэшированный  пароль
+            PasswordHash = passwordHash;
             Role = role;
         }
 

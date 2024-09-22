@@ -110,35 +110,63 @@ namespace ProjectManagementSystem.modules.UserInteraction
         // Отображает главное меню для авторизованных пользователей
         private void ShowMainMenu()
         {
-            Console.WriteLine("1. Create project");
-            Console.WriteLine("2. Create task");
-            Console.WriteLine("3. View tasks");
-            Console.WriteLine("4. Update task status");
-            Console.WriteLine("5. Logout");
-
-            Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
-
-            switch (choice)
+            if (_currentUser.IsManager())
             {
-                case "1":
-                    CreateProject();
-                    break;
-                case "2":
-                    CreateTask();
-                    break;
-                case "3":
-                    ViewTasks();
-                    break;
-                case "4":
-                    UpdateTask();
-                    break;
-                case "5":
-                    Logout();
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice.");
-                    break;
+                Console.WriteLine("1. Create project");
+                Console.WriteLine("2. Create task");
+                Console.WriteLine("3. View tasks");
+                Console.WriteLine("4. Update task status");
+                Console.WriteLine("5. Logout");
+
+                Console.Write("Enter your choice: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        CreateProject();
+                        break;
+                    case "2":
+                        CreateTask();
+                        break;
+                    case "3":
+                        ViewTasks();
+                        break;
+                    case "4":
+                        UpdateTask();
+                        break;
+                    case "5":
+                        Logout();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("1. View tasks");
+                Console.WriteLine("2. Update task status");
+                Console.WriteLine("3. Logout");
+
+                Console.Write("Enter your choice: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        ViewTasks();
+                        break;
+                    case "2":
+                        UpdateTask();
+                        break;
+                    case "3":
+                        Logout();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
             }
         }
 

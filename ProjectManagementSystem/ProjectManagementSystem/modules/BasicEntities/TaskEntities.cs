@@ -13,7 +13,7 @@ namespace ProjectManagementSystem.modules.BasicEntities
         public TaskStatusEntities StatusEntities { get; private set; }
         public string Assignee { get; }
         
-        private List<IObserver> observers = new List<IObserver>();
+        private List<IObserver> _observers = new List<IObserver>();
 
         [JsonConstructor]
         public TaskEntities(int id, int projectId, string name, string description, TaskStatusEntities statusEntities, string assignee)
@@ -33,12 +33,12 @@ namespace ProjectManagementSystem.modules.BasicEntities
 
         public void AddObserver(IObserver observer)
         {
-            observers.Add(observer);
+            _observers.Add(observer);
         }
 
         public void NotifyObservers(string @event)
         {
-            foreach (IObserver observer in observers)
+            foreach (IObserver observer in _observers)
             {
                 observer.Update(this, @event);
             }
